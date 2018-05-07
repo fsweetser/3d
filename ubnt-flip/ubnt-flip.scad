@@ -11,7 +11,7 @@ shell = 2;
 apdiameter = 210;
 // How much clearance to allow for the AP thickness,
 // including room to maneuver into the bracket
-apdepth = 90;
+apdepth = 80;
 
 // Width of the overall bracket
 width = 50;
