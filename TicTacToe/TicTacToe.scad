@@ -17,6 +17,13 @@ wallthick = 4;
 wallspace = 1;
 // How much space between the pins and their notches.
 pinspace = 0.6;
+// Height of the walls.
+wallz = (spsize/2)/cos(60);
+// Used to calculate how much extra room we'll need to
+// allow the piece to spin without bumping into the walls.
+swing = (spsize)/cos(30);
+// Base for calculating wall dimensions in the Y axis.
+wally = swing+(2*wallthick)+(2*wallspace);
 
 module gamepiece () {
     translate([0,0,tan(30)*(spsize/2)]) {
@@ -57,13 +64,7 @@ module gamepiece () {
     }
 
 
-    // Height of the walls.
-    wallz = (spsize/2)/cos(60);
-    // Used to calculate how much extra room we'll need to
-    // allow the piece to spin without bumping into the walls.
-    swing = (spsize)/cos(30);
-    // Base for calculating wall dimensions in the Y axis.
-    wally = swing+(2*wallthick)+(2*wallspace);
+
    
     // Create the two walls adjacent to the pins.  The cylinders here
     // are holes carved out of the walls, plus a little extra clearance.
@@ -104,7 +105,7 @@ module gamepiece () {
 
  for(x=[0:2])
     for(y=[0:2])
-        translate([x*(spsize+(2*wallspace)+(2*wallthick)), y*(spsize+(2*wallspace)+(2*wallthick)), 0]){
+        translate([x*(spsize+(2*wallspace)+(2*wallthick)), y*wally, 0]){
             gamepiece();
         }
 
