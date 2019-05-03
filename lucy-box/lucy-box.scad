@@ -1,13 +1,13 @@
 // Altoid tin base inner dimensions
-tinx = 91.5;
-tiny = 56.9;
-tinz = 21.2;
+tinx = 90;
+tiny = 56;
+tinz = 17;
 tincorner = 14;
 
 // Lucy dimensions, with cartridge installed
 // the 0.5 is for extra clearance
 
-stubx = 18.5;
+stubx = 18;
 stuby = 14.5;
 lucyx = 55.5;
 lucyy = 42.5;
@@ -17,8 +17,9 @@ lucyz = stuby;  // real size is 9, we use the maximum size for the hole
 cartlen = 53;
 cartd   = 11;
 
-// Amount to shift everything on X to center it up
-xshift = 2;
+// Amount to shift everything to center it up
+xshift = 1;
+yshift = 5;
 
 // Size of the wall between Lucy and the spare cartridge
 sepwall = 0.51;
@@ -55,7 +56,7 @@ module cartridge() {
 difference() {
     tin();
     
-    translate([xshift,0, (tinz - lucyz)/2]){
+    translate([xshift, yshift, (tinz - lucyz)/2]){
         lucy();
     }
     translate([xshift, 0, (tinz - cartd)/2]){
