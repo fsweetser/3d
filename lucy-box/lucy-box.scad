@@ -24,6 +24,8 @@ yshift = 5;
 // Size of the wall between Lucy and the spare cartridge
 sepwall = 0.51;
 
+$fn = 72;
+
 module tin() {
     cube([tinx - (2*tincorner), tiny, tinz], center=true);
     cube([tinx, tiny - (2*tincorner), tinz], center=true);
