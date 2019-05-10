@@ -24,6 +24,9 @@ yshift = 5;
 // Size of the wall between Lucy and the spare cartridge
 sepwall = 0.51;
 
+// How much to round off the inner corner to avoid mushrooming
+corner = 5;
+
 $fn = 72;
 
 module tin() {
@@ -47,6 +50,14 @@ module lucy() {
     cube([lucyx, lucyy, lucyz], center=true);
     translate([-(lucyx + stubx)/2,-(lucyy - stuby)/2,0]){
         cube([stubx, stuby, stuby], center=true);
+    }
+    translate([-(lucyx + (corner/2))/2, -((lucyy/2-stuby) - corner/4), 0]){
+        difference() {
+            cube([corner/2, corner/2, lucyz], center=true);
+            translate([-corner/4,corner/4,0]){
+                cylinder(d=corner, h=lucyz, center=true);
+            }
+        }
     }
 }
 
