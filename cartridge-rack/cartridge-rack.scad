@@ -10,7 +10,7 @@ ymargin = 3;
 blockx = cartdiam + (2*xmargin); //20;
 blocky = cartdiam + (2*ymargin); //15;
 
-floor = 0.5;
+floor = 1;
 
 stepz = cartdepth/2;
 
