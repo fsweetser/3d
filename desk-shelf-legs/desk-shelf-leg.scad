@@ -1,7 +1,7 @@
 ht = 150;
 diam = 50;
 
-
+brackets = 4;
 
 brhole  = 3.3;
 brwall  = 3;
@@ -86,16 +86,10 @@ module bracket () {
 
 cylinder(h = ht, d = diam);
 
-translate([0,diam/2,0]){
-    bracket();
-}
-rotate([0,0,120]){
-    translate([0,diam/2,0]){
-        bracket();
-    }
-}
-rotate([0,0,240]){
-    translate([0,diam/2,0]){
-        bracket();
+for (i = [0:(brackets-1)]){
+    rotate([0,0,i*(360/brackets)]){
+        translate([0,diam/2,0]){
+            bracket();
+        }
     }
 }
