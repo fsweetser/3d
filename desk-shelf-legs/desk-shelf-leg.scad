@@ -3,7 +3,7 @@ diam = 50;
 
 brackets = 4;
 
-brhole  = 3.3;
+brhole  = 3.75;
 brwall  = 3;
 brx = 7;
 bry = 14;
@@ -55,7 +55,7 @@ module bracket () {
     translate([0,0,brwall/2]){
         difference(){
             cube([brx, bry*2, brwall], center = true);
-            translate([0, bry - (brhole/2) - (brx/4), 0]){
+            translate([0, bry - (brhole/2) - (brx/3), 0]){
                 cylinder(d = brhole, h = brwall + 1, center = true);
             }
         }
