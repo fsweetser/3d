@@ -1,12 +1,13 @@
-ht = 150;
-diam = 50;
+ht = 150;       // height of the leg
+diam = 50;      // diameter of the main cylinder
 
-brackets = 4;
+brackets = 4;   // how many screw brackets to create
 
-brhole  = 3.3;
-brwall  = 3;
-brx = 7;
-bry = 14;
+brhole  = 3.3;  // diameter of the screw hole
+brwall  = 3;    // thickness of the bracket walls
+brx = 7;        // how wide to make the bracket
+bry = 14;       // how long to make the bracket (only half will be outside of the cylinder)
+foot = 10;      // how far the foot extends from the main cylinder
 
 $fn = 36;
 
@@ -85,6 +86,12 @@ module bracket () {
 
 
 cylinder(h = ht, d = diam);
+
+footht = tan(60)*(diam + (2*foot));
+translate([0,0,ht - footht]){
+    cylinder(r1 = 0, d2 = (diam + (2*foot)),
+             h = footht);
+}
 
 for (i = [0:(brackets-1)]){
     rotate([0,0,i*(360/brackets)]){
