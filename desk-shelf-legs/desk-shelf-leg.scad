@@ -3,7 +3,7 @@ diam = 50;      // diameter of the main cylinder
 
 brackets = 4;   // how many screw brackets to create
 
-brhole  = 3.3;  // diameter of the screw hole
+brhole  = 3.75;  // diameter of the screw hole
 brwall  = 3;    // thickness of the bracket walls
 brx = 7;        // how wide to make the bracket
 bry = 14;       // how long to make the bracket (only half will be outside of the cylinder)
@@ -56,7 +56,7 @@ module bracket () {
     translate([0,0,brwall/2]){
         difference(){
             cube([brx, bry*2, brwall], center = true);
-            translate([0, bry - (brhole/2) - (brx/4), 0]){
+            translate([0, bry - (brhole/2) - (brx/3), 0]){
                 cylinder(d = brhole, h = brwall + 1, center = true);
             }
         }
