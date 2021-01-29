@@ -8,6 +8,7 @@ brwall  = 3;    // thickness of the bracket walls
 brx = 7;        // how wide to make the bracket
 bry = 14;       // how long to make the bracket (only half will be outside of the cylinder)
 foot = 10;      // how far the foot extends from the main cylinder
+footangle = 60; // angle of the foot
 
 $fn = 36;
 
@@ -87,7 +88,7 @@ module bracket () {
 
 cylinder(h = ht, d = diam);
 
-footht = tan(60)*(diam + (2*foot));
+footht = tan(footangle)*(diam + (2*foot));
 translate([0,0,ht - footht]){
     cylinder(r1 = 0, d2 = (diam + (2*foot)),
              h = footht);
