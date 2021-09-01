@@ -1,3 +1,5 @@
+use <write.scad>
+
 $fn = 36;
 
 outerx = 86;
@@ -151,6 +153,11 @@ difference(){
         rotate([0,0,0]){
             corner(crad=cornerrad, cht=outerz);
         }
+    }
+    
+    // Label for top side
+    translate([outerx/2, 0, bottomz]){
+        #write("TOP", center=true);
     }
 }
 translate([postxmargin,postboty,outerz]){
