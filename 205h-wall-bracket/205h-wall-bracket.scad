@@ -42,8 +42,8 @@ screwtop = 7.25;
 screwbot = 0.74;
 
 cornerscrewxmargin = 8.25;
-cornerscrewbotymargin = 19.25;
-cornerscrewtopymargin = 25;
+cornerscrewbotymargin = 24.25;
+cornerscrewtopymargin = 19.25;
 
 midscrewxmargin = 13.75;
 
@@ -92,20 +92,20 @@ difference(){
     translate([cornerscrewxmargin,cornerscrewbotymargin,0]){
         screwhole();
     }
-    translate([cornerscrewxmargin,outery-cornerscrewbotymargin,0]){
+    translate([cornerscrewxmargin,outery-cornerscrewtopymargin,0]){
         screwhole();
     }
     translate([outerx-cornerscrewxmargin,cornerscrewbotymargin,0]){
         screwhole();
     }
-    translate([outerx-cornerscrewxmargin,outery-cornerscrewbotymargin,0]){
+    translate([outerx-cornerscrewxmargin,outery-cornerscrewtopymargin,0]){
         screwhole();
     }
     
-    translate([midscrewxmargin,(botholegap+botholey+(screwclearance/2)),0]){
+    translate([midscrewxmargin,(botholegap+botholey+(screwclearance/2)+2),0]){
         screwhole();
     }
-    translate([outerx-midscrewxmargin,(botholegap+botholey+(screwclearance/2)),0]){
+    translate([outerx-midscrewxmargin,(botholegap+botholey+(screwclearance/2)+2),0]){
         screwhole();
     }
     
@@ -156,8 +156,8 @@ difference(){
     }
     
     // Label for top side
-    translate([outerx/2, 0, bottomz]){
-        #write("TOP", center=true);
+    translate([outerx/2, outery-15, bottomz]){
+        write("TOP", h=10, center=true);
     }
 }
 translate([postxmargin,postboty,outerz]){
@@ -188,7 +188,7 @@ module notch(){
     notchz = 2;
     
     lipx = 2.75;
-    lipy = 7.75;
+    lipy = 8;
     
     cube([notchx, notchy, outerz-notchz]);
     translate([0,lipy,0]){
