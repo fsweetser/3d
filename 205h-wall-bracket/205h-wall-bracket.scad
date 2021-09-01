@@ -28,6 +28,23 @@ botscrewy = 35;
 
 cornerrad = 10;
 
+screwcol2sep = 22.75;
+
+postboty = 39.5;
+postymargin = 82.8;
+postxmargin = 7.75;
+
+screwclearance = 10;
+screwhole = 4.5;
+screwtop = 7.25;
+screwbot = 0.74;
+
+cornerscrewxmargin = 8.25;
+cornerscrewbotymargin = 19.25;
+cornerscrewtopymargin = 25;
+
+midscrewxmargin = 13.75;
+
 difference(){
     // main block
     cube([outerx, outery, outerz]);
@@ -52,6 +69,41 @@ difference(){
         screwhole();
     }
     translate([outerx/2,botscrewy+elecholespace,0]){
+        screwhole();
+    }
+    
+    
+    translate([(outerx/2)+screwcol2sep,botscrewy,0]){
+        screwhole();
+    }
+    translate([outerx/2+screwcol2sep,botscrewy+elecholespace,0]){
+        screwhole();
+    }
+    
+    translate([(outerx/2)-screwcol2sep,botscrewy,0]){
+        screwhole();
+    }
+    translate([(outerx/2)-screwcol2sep,botscrewy+elecholespace,0]){
+        screwhole();
+    }
+    
+    translate([cornerscrewxmargin,cornerscrewbotymargin,0]){
+        screwhole();
+    }
+    translate([cornerscrewxmargin,outery-cornerscrewbotymargin,0]){
+        screwhole();
+    }
+    translate([outerx-cornerscrewxmargin,cornerscrewbotymargin,0]){
+        screwhole();
+    }
+    translate([outerx-cornerscrewxmargin,outery-cornerscrewbotymargin,0]){
+        screwhole();
+    }
+    
+    translate([midscrewxmargin,(botholegap+botholey+(screwclearance/2)),0]){
+        screwhole();
+    }
+    translate([outerx-midscrewxmargin,(botholegap+botholey+(screwclearance/2)),0]){
         screwhole();
     }
     
@@ -101,16 +153,20 @@ difference(){
         }
     }
 }
+translate([postxmargin,postboty,outerz]){
+    post();
+}   
+translate([outerx-postxmargin,postboty+postymargin,outerz]){
+    post();
+}
+
 
 
 module screwhole() {
-    clearance = 10;
-    screwhole = 4.5;
-    screwtop = 7.25;
-    screwbot = 0.74;
+
     
     translate([0,0,bottomz]){
-        cylinder(d=clearance, h=outerz);
+        cylinder(d=screwclearance, h=outerz);
     }
     cylinder(d=4.5, h=bottomz);
     translate([0,0,screwbot]){
@@ -138,5 +194,26 @@ module corner(crad=10, cht=5) {
     difference(){
         cube([crad, crad, cht]);
         cylinder(r=crad, h=cht);
+    }
+}
+
+module post() {
+    hatz=1.25;
+    hatd=7;
+    haty=3.75;
+    
+    stemd=4.25;
+    stemz=4.3;
+    
+    translate([0,0,stemz - hatz]){
+        intersection(){
+            cylinder(d=hatd, h=hatz);
+            translate([0,0,hatz/2]){
+                cube([hatd, haty, hatz], center=true);
+            }
+        }
+    }
+    translate([0,0,stemz/2]){
+        cube([stemd, stemd, stemz], center=true);
     }
 }
