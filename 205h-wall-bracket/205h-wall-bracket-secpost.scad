@@ -163,10 +163,15 @@ difference(){
             corner(crad=cornerrad, cht=outerz);
         }
     }
-    
+
     // Label for top side
     translate([outerx/2, outery-15, bottomz]){
         write("TOP", h=10, center=true);
+    }
+
+    // Identify compatible model
+    translate([outerx/2,15,bottomz]){
+        #write("205H", h=10, center=true);
     }
 }
 translate([postxmargin,postboty,outerz]){
