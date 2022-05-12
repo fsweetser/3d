@@ -52,8 +52,8 @@ difference(){
     cube([outerx, outery, outerz]);
     
     // gap down the main cube
-    translate([(outerx-pathx)/2,gridthick,bottomz]){
-        cube([pathx, outery-(2*gridthick), outerz]);
+    translate([(outerx-pathx)/2,0,bottomz]){
+        cube([pathx, outery, outerz]);
     }
     
     // top half of the hole
@@ -109,16 +109,7 @@ difference(){
         screwhole();
     }
     
-    // ventilation holes
-    ventoffsets = [-3,-2, -1, 0, 1, 2, 3];
-    for (ofs = ventoffsets) {
-        translate([(outerx/2)+(ofs*(1+(outerz-bottomz-2))),outery,bottomz+((outerz-bottomz)/2)]){
-            rotate([90,0,0]){
-                cylinder(d=outerz-bottomz-2, h=outery);
-            }
-        }
-    }
-    
+   
     // holes for the mounting bits to latch onto
     translate([4.25+5, 105.5, 0]){
         mirror([1,0,0]) notch();
@@ -162,7 +153,7 @@ difference(){
 
     // Identify compatible model
     translate([outerx/2,15,bottomz]){
-        #write("205H", h=10, center=true);
+        write("205H", h=10, center=true);
     }
 }
 translate([postxmargin,postboty,outerz]){
