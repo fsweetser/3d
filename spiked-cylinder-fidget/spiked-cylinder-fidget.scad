@@ -26,3 +26,15 @@ throughhole = 0;
 slot = 0;
 
 include <cylinder.scad>
+
+spikecyl(
+            steps = steps,
+            cylr  = cylr,
+            spikeh = spikeh,
+            zspikes = zspikes,
+            toph = toph,
+            keychain = keychain,
+            inckeychain = inckeychain,
+            throughhole = throughhole,
+            slot = slot
+            );
